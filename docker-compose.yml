@@ -1,0 +1,17 @@
+version: '3'
+services:
+  spark-working-env:
+    image: jupyter/pyspark-notebook:x86_64-spark-3.5.0
+    container_name: spark-working-env
+    ports:
+      - 8888:8888
+    volumes:
+      - ./data:/home/jovyan/data
+      - ./scripts:/home/jovyan/scripts
+    networks:
+      - dataeng-data-platform
+
+networks:
+  dataeng-data-platform:
+    external: true
+      

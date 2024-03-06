@@ -1,0 +1,133 @@
+Spark Components:
+
+  1. Low level api:  RDD and distributed variables (broadcast and accumulators)
+  2. Structured api: Dataframes, Datasets and SQL
+  3. Libraries, structured streaming and Advanced analytics
+
+
+How spark works:
+
+  Driver: maintaine the state of the executors
+          distribute and schedule the work to the executors
+  
+  Executors: are JVM processes
+             execute the code
+             respond to driver with execution status
+             Each executor has a number of cores
+
+  Job: has one or more stages
+    Stages: each time we need to shuffle the data we have a new stage
+            on shuffle the data are serialized in order to redistributed 
+        Tasks: its a unit of work on a single partition
+              each core can work on a single task at a time
+
+Transformations and actions:
+
+  Partitions: the data are splited in partitions to achive parrallelism
+              each task can work on a single partition
+
+  Transformations: are operations to transform the data (lazy evaluated)
+                   Narrow: can be done without shuffle (filter, select)
+                   Wide:   need shuffle to completed   (groupBy, join)
+  
+  Actions: trigger the execution plan 
+           1. view data in console
+           2. Collect data to native language
+           3. Write data to output sources
+
+  Lazy evaluation: wait until an action to execute the graph of computation
+                   alows spark to plan, optimize and use of resources properly
+
+  Spark Session: is the entry point of spark execution
+                 the spark sessions instance execute the code in cluster
+                 One spark application has only one spark session
+
+
+Execution plan:
+
+  Logical plan: validate from catalog the table names and column names and produce Resolved logical plan
+  Resolved logical plan: it is feeted in the Catalyst for optimizations
+  Optimized logical plan: is the logical DAG of execution
+  Physical plan: Optimizer will generate multiple physical plans based on logical plan
+  Best plan: On each physical plan will be assigned a cost and the best plan will be selected by spark and send to the cluster for execution 
+
+Spark UI: displays information about executions on the cluster
+
+  SQL/DataFrame: shows the queries executed from structure API 
+
+
+
+
+Complex data file types:
+    
+    All of them store the metadata inside data files
+    
+    Parquet: COLUMNAR, used in delta table
+    ORC:     COLUMNAR, used in HIVE  
+    AVRO:    ROW,      used in Kafka
+    
+    
+    
+Spark cluster execution:
+    
+        SparkSession: is the entry of the spark program
+        Resource manager or Cluster manager: run on spark master node
+        Executors: are jvm processes
+        
+        
+        Deployment mode client: driver program is on client machine
+        
+            1. Driver Program will use sparkSession object to communicate with resource manager
+            2. Driver Program will request from Resource manager the number of executors and cores it needs
+            3. Resource manager will communicate with Worker nodes and will launch the executors and cores requested by the Driver program
+            4. Resource manager will send to Driver program the information of nodes that will serve the app
+            5. Driver program will send the app code to all executors
+            6. Then the spark session will instruct the tasks it need to perform (one task to each core of executor)
+            7. Executors will report back to Driver program the results
+            8. Driver program will communicate with Resource manager to shut down the resources
+        
+        Deployment mode cluster: the driver program is inside the cluster in an executor
+                
+                The client will submite the code to the cluster 
+                The Resource manager will launch another executor that will host the driver program
+                
+                
+        Cluster manager types:
+            
+            Local mode: dont have a cluster, everything run on a single machine
+                        only require java installation
+            OR 
+            Cluster mode:
+                We deploy a cluster of below master/slace architecture and we use the spark-submit script to submit the driver program to the cluster
+                
+                    Standalone: when not having a hadoo cluster and we need only spark cluster
+                    Yarn: when deploy a hadoop cluster
+                    Apache mesos: depricated
+                    Kubernetes: containerized environment
+            
+        Spark properties:
+            
+            spark.executor.memory: default memory per executor (1GB)
+
+Spark Submit: submit jobs to spark cluster
+    
+    1. Create a python file with spark code 
+    2. Move to spark installation folder
+    3. ./bin/spark-submit --master <ip:port> --num-executors 3 --executor-cores 2 --executor-memory 512M ./home/path/to/python/file
+    
+    
+UDFs:
+    
+    Driver program will send the UDF sto spark nodes
+    Executor will spinup a python process
+    Data will be serialized from spark to python objects and they will be processed row-by-row 
+    Once the data processed will be serialized back to jvm process and results will be send to driver
+    
+    
+    1. Try tyo utilize spark functions
+    2. If cannot avoid the UDF its better to write the udf in scala or java to eliminate the need of python process
+    
+    
+Spark Explain plan:
+    
+    
