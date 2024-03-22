@@ -1,18 +1,19 @@
 version: '3'
 services:
-  spark-working-env:
-    image: jupyter/pyspark-notebook:python-3.8
-    container_name: spark-working-env
+  spark-env:
+    build: .
+    container_name: spark-env
     ports:
-      - 8888:8888
+      - "8888:8888"
+      - "4040:4040"
     volumes:
-      - ./data:/home/jovyan/data
+      - ~/my-repos/datalake:/home/jovyan/data
       - ./batch:/home/jovyan/batch
       - ./structured_streaming:/home/jovyan/structured_streaming
+      - ./deltalake:/home/jovyan/deltalake
     networks:
       - dataeng-data-platform
 
 networks:
   dataeng-data-platform:
     external: true
-      
