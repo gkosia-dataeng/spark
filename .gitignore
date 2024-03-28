@@ -1,2 +1,7 @@
 *.csv
 */data/*
+*.dat
+*.ctrl
+*.log
+*.lck
+*.pyc
