@@ -12,6 +12,7 @@ services:
       - ./structured_streaming:/home/jovyan/structured_streaming
       - ./deltalake:/home/jovyan/deltalake
       - ./postgresql-42.2.20.jar:/home/jovyan/jars/postgresql-42.2.20.jar
+      - ../Challenges:/home/jovyan/challenges
     networks:
       - dataeng-data-platform
 
