@@ -3,3 +3,6 @@ https://www.machinelearningplus.com/pyspark/pyspark-exercises-101-pyspark-exerci
 Challenge_0_xx: 
     2: auto increment column: window, monotonically_increasing_id
     3: lists to df: sparkContext.parallelize(list(zip))
+    4,5: items in A not in B..: subtract, union
+    6: percentile
+    7: groupBy 
