@@ -1,8 +1,21 @@
 https://www.machinelearningplus.com/pyspark/pyspark-exercises-101-pyspark-exercises-for-data-analysis/#
 
-Challenge_0_xx: 
+Challenge_0_20: 
     2: auto increment column: window, monotonically_increasing_id
     3: lists to df: sparkContext.parallelize(list(zip))
     4,5: items in A not in B..: subtract, union
     6: percentile
     7: groupBy 
+    8: .rdd.flatMap(lambda x: x).collect(), when().otherwise()
+    9: df.dropna(subset=[])
+    10: df.withColumnRenamed
+    15: union
+    17,19: initcap, length
+    20: window, lag
+
+Challenge_21_xx:
+    21: to_date, dayofmonth, weekofyear, dayofyear, dayofweek
+    22: date_add, to_date
+    24: rlike
+    25: pivot
+    28: collections.Counter, udf
