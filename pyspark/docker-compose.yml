@@ -7,12 +7,13 @@ services:
       - "8888:8888"
       - "4040:4040"
     volumes:
-      - ~/my-repos/datalake:/home/jovyan/data
       - ./batch:/home/jovyan/batch
       - ./structured_streaming:/home/jovyan/structured_streaming
       - ./deltalake:/home/jovyan/deltalake
       - ./postgresql-42.2.20.jar:/home/jovyan/jars/postgresql-42.2.20.jar
-      - ../Challenges:/home/jovyan/challenges
+      - ../challenges:/home/jovyan/challenges
+      - ./spark-config/spark-defaults.conf:/usr/local/spark/conf/spark-defaults.conf
+      - ./spark-config/hive-site.xml:/usr/local/spark/conf/hive-site.xml
     networks:
       - dataeng-data-platform
 

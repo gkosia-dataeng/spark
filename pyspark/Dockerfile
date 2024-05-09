@@ -16,6 +16,3 @@ RUN groupadd -f ${USER} && \
     chown -R ${USER}:${USER} ${HOME}
 
 USER ${NB_USER}
-
-RUN export PACKAGES="io.delta:delta-core_2.12:0.7.0"
-RUN export PYSPARK_SUBMIT_ARGS="--packages ${PACKAGES} pyspark-shell"
