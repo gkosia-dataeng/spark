@@ -1,0 +1,21 @@
+Problem:
+    I have a file of 25GB size.
+    I want to process it in paralellize
+
+    How many cores i need?
+    How many executors i need?
+    What is the right memory per executor?
+    What is the total memory?
+
+Solution:
+
+    File size  = 25GB
+    Number of blocks:     file size  / default block size == 25GB / 128MB => 200 blocks
+    Number of partitions: each block loaded as one partition              => 200 partitions 
+    Number of cores:      each core run one task on one partition         => 200 cores
+
+    Number of executors:  best practices said cores per executor should be 2-5, if we choose 4  => 200/4 => 50 
+
+    Memory per core: minimum is 4 * default partition size => 4*128MB        => 512MB per core
+    Memory per executor:  Memory per core * number of executors => 4 * 512MB => 2GB
+    Total memory: Memory per executor * number of executors => 50 * 2GB      => 100GB

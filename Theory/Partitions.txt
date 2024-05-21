@@ -1,0 +1,14 @@
+Problem:
+    When we load data in spark are loaded to RDDs
+    An RDD is consists of one or more partitions
+
+    What is the default number of partitions?
+
+Solution:
+    
+    In local file system because the file is not splited in block the spark split the data to partitions
+    Thus the default number of partitions is the number of cores allocated for the application
+
+
+    If we read from distributed filesystem the default nubmer of partitons is the number of blocks of the file
+    Number of blocks = file size / default block size (HDFS 128MB)

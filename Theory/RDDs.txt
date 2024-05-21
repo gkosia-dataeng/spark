@@ -1,0 +1,26 @@
+RDD: used to hold data in spark environment
+     An RDD devided to partitions in order to be processed distributed
+
+     On an RDD we can apply a set of operations
+
+        Transormations
+            transformation(RDD) => RDD
+        Actions     
+            action(RDD) => single value OR collection of values
+
+
+
+RDD vs Dataframe:
+
+    Dataframe --> Rdd:
+
+        df.RDD it will create an RDD of Row objects
+
+    RDD to Dataframe:
+
+        rddObj.toDF: toDF method excpect that every element of the RDD is Tuple
+                     if the elements are Row objects then it will fail
+
+                     If the elements are Row objects then we have to provide the schema also
+
+                        spark.createDataframe(rddObj, schema)  

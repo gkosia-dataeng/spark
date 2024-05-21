@@ -1,0 +1,26 @@
+When a Spark app submited 2 programs will created:
+
+    Driver:
+        Is the master process of the spark application
+        Executed in the master process of cluster
+            Standalone: master process => Spark master: 8088
+            YARN: master process =>       Resource manager: 8088
+              
+
+        
+    Executor:
+        Is the slave process of the spark application
+        Executed on the slave process of the cluster
+            Standalone: slave process  => Spark worker:7077
+             YERN:      slave process  => Node manager:7077
+        
+
+    Resource manager maintain the cluster state
+    Node manager will maintain the specific node
+    Resource manager will instruct the Node managers to allocate resources for the executors
+
+    1. Create the driver and executors of the application 
+    2. Allocate the resources for executors (Memory and number of cores)
+    3. Load each block of the source data as partitions
+    4. Driver program will provide the logic(driver program) of the app to all executors
+    5. The executors will execute the driver program
