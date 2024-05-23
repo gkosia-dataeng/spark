@@ -24,3 +24,10 @@ RDD vs Dataframe:
                      If the elements are Row objects then we have to provide the schema also
 
                         spark.createDataframe(rddObj, schema)  
+
+
+
+
+
+
+        

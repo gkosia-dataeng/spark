@@ -1,0 +1,21 @@
+Spark cluster environments (master-slave architectures (environments)):
+
+    YARN: when install a hadoop cluster
+    Standalone: start-master.sh (master), (workers) start-slave.sh <master-address> 
+    Mesos
+    k8: deploy spark master, slave nodes
+
+Deployments modes:
+
+
+Spark application modes:
+
+    Local: dont need cluster, run spark as application, need java to be installed
+           To start a session: spark-shell --master local: run spark commands from terminal
+                               When we start a session then a SparkSubmit process will be launched
+
+    Cluster: submit the application to a cluster
+             We need a cluster to be available 
+
+             To start a session: spark-shell --master <clusteradress>
+

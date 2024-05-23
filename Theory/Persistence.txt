@@ -1,0 +1,37 @@
+Persistence:
+
+    Spark does not maintain the data between the transformations and actions
+    Persistence allow us to store the intermitiate data between transformations (in case if we have a lot of transformations)
+    Using Persistence in case of failure spark will continue the execution from the last persistance step    
+
+    **** If an rdd is refered to multiple places then it will be recomputed at each place because the spark drop the data from intermitiate steps
+
+        Use persistance:
+            if the operations of an rdd are complex or expensive
+            When the output of the rdd is used in multiple flows
+
+
+    We can persist data in two places: 
+
+        Memory: fast, limited size
+        Disk: slow, large amount of data
+
+
+    Operations:
+
+        cache(): support only IN MEMORY
+        persist(): support both memory and disk: Default is IN MEMORY
+        unpersist(): remove the persisted rdd 
+
+
+        NOTE: Serialized: compressed TO BE STORED IN MEMORY (less size), but need to deserialized in order to use them
+        
+        MEMORY_ONLY: in deserialized format
+        MEMORY_ONLY_SER
+        MEMORY_AND_DISK: if data fit to memory will be stored in memory deserialized  otherwise in disk serialized
+        MEMORY_AND_DISK_SER
+        DISK_ONLY: always stored in serialized format
+
+
+    Persisted objects can be found in Spark UI under the Storage tab.
+    Also in job detail son dag visualization the rdd persisted is green.

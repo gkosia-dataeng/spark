@@ -1,0 +1,36 @@
+Spark require a Master-slave cluster architecture to run
+
+In case of a Hodoop cluster:
+
+    HDFS is the distributed storage
+    MapReduce framework on top of YARN for processing
+
+    HDFS Processes (Storage):
+        Name node:  master processes
+        Secondary name node: master processes
+        Data node: slave processes
+
+        I need at least one master process and 1 or more slave processes
+
+
+    YARN processes:    provide a master-slave architecture (environment) for distributed processing engines (MapReduce or Spark)
+        Resource manager: master process
+        Application manager: intermidiate processes
+        Application master: intermidiate processes
+        Node manager: slave process
+
+
+
+What happen on the cluster when we will submit a MapReduce app:
+
+    1. Resource manager will spin up an Application manager process
+    2. The Application manager will create one Application Master
+    3. The Application manager will create multiple  Nodes managers
+
+    A YARN cluster will have Only one Resource manager, Only one Application Manager
+                             One Application Master and multiple Node Managers FOR EACH MapReduce or Spark Application 
+
+    If a Node manager fails the Application Master will spinup a new one
+    If Application Master fails then Application Manager will spinup a new one
+    If Application Manager fails then Resource manager will spinup a new one
+    If Resource manager fails then RMHA will take place (the other replica of RM will become active) 
