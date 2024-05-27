@@ -1,0 +1,12 @@
+At each wide transformation we have shuffle
+At shuffle data moved between of Nodes( travel over network)
+Data in partitions are JVM Objects
+Data in order to travel over the network should be in bytes (Serialized onbjects)
+So at shuffle data are Serialized to moved to other Node and then Deserialized (JVM Objects)and loaded in partitions
+
+Types of Serialization:
+    Java Serialization: (default serialization in spark)
+        Used to serialized  Java, Scala objects
+    Kryo Serialization: (can be set to serialize rdds and dataframes)
+        Introduced in spark to efficient serialize DF, RDD objects
+    Encoders: only for serialize datasets

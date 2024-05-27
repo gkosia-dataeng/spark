@@ -1,3 +1,12 @@
+RDD: Reselient Distributed Dataset 
+    lower level objects of Spark
+    
+    reselient: rebuilded from history 
+    distributerd: an rdd is consists of partitions (distribute partitions accross cluster)
+    RDD are Immutable: spark will create a new RDD after one operation and will remember the previus state
+                       in case of failure of creation of the new rdd it will go only 1 step back
+
+
 RDD: used to hold data in spark environment
      An RDD devided to partitions in order to be processed distributed
 
@@ -30,4 +39,3 @@ RDD vs Dataframe:
 
 
 
-        

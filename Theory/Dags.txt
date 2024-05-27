@@ -1,0 +1,14 @@
+Sprk is Lazy evaluation engine
+Will trigger execution only when an action operation should run
+At that point the operations until that point will be included to produce the execution plan
+
+Dag: logical flow of operations, its based on the physical plan rdd program 
+      chain of rdd dependencies organized as Dag
+      Nodes are the rdds, Edges are the operations
+
+      
+The DAG is needed for:
+    Optimized plans
+    Minimize shuffle: 
+    Fault tolerance: 
+    RDD recovery

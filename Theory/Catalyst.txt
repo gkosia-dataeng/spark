@@ -1,0 +1,14 @@
+Spark is sql engine
+Dataframe logic will converted to Rdd program 
+Catalyst optimizer is part of Spark SQL Engine
+Catalyst optimizer will analyze the SQL or Dataframe program and will produce the RDD program
+
+    1. User write the program in SQL or Datarame API 
+    2. We have an unresolve logical plan
+    3. Analyze the Unresolved logical plan and produce the logical Plan
+    4. Optimize the Logical plan
+            Predicate pushdown (move predicate earlier to have less data)
+            Projection Pruning (only the columns needed will be read and prossed)
+            Join reordering: most efficient join order based on the size of tables
+    5. Produce multiple physical plans and assign a cost 
+    6. Choose the lower cost physical plan and generate the RDD code

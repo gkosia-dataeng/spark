@@ -1,0 +1,25 @@
+When we submit an app then two processes will start
+
+    Driver programm: master process: 8088
+    Executor program: slave process: 7077
+
+    When i am runnign in cluster mode:
+
+        1. Resource manager will instuct Node Managers to allocate resources for the executors
+        2. For each block will be created a partition (block is in storage, partition is im memory)
+        3. The Driver will send the driver program to all nodes (the executors)
+
+
+Task: it is the execution of an operation on a single partition
+      after the execution of the task the data will be saved to a new partition and the previous partition will discurted
+      1 core run 1 task that can operate on a single partition
+      #blocks = #partitions = #tasks 
+
+Stage: each narrow transformation run in a task and produce a new partition
+       each wide transformation triggers a shuffle(data exchange between partitions) and a new stage is initiated
+
+        A task is the execution of a narrow transformation on a partition
+        A stage is a sequence of narrow transformations
+        New stage: will be created on each wide transformation
+
+       
