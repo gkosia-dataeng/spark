@@ -1,0 +1,16 @@
+spark.executor.cores: cores for each executor process
+spark.executor.memory: memory for each executor process
+
+spark.driver.cores: cores for driver process
+spark.driver.memory: memory for driver process
+
+spark.executor.instances: number of executors
+
+
+spark.sql.shuffle.partitions: how many partitions will have on the output of a wide transformation (join, groupBy), default 200
+
+spark.default.parallelism: default number of partitions when not specified (repartition()), set it to number of cores
+
+
+
+spark.jars.packages: comma separeted list of jars needed

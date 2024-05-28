@@ -1,0 +1,20 @@
+Client:
+        On client mode driver program run loccaly
+
+
+        When to use:
+            When you want interactive functionality (run code, see the results...)
+            When develop/debug
+
+
+Cluster:
+
+        On cluster mode when submit a job to the cluster then the Cluster Manager (Master node) is used to find a slave node that have available resources to execute the Driver Program
+        As a result the Driver program will run inside the cluster
+        In this mode you cannot get the results, it must stored somewhere (table, file..)
+
+        
+        Proc:
+            Easier resource allocation (master will decide where the driver program will run)
+            Monitor the Driver Program from Master Web UI
+            Stop at the end, once the job is finished the resources are freed

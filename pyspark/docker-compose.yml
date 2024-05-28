@@ -6,6 +6,7 @@ services:
     ports:
       - "8888:8888"
       - "4040:4040"
+      - "4041:4041"
     volumes:
       - ./batch:/home/jovyan/batch
       - ./structured_streaming:/home/jovyan/structured_streaming
