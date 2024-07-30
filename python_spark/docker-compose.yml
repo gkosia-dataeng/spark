@@ -8,13 +8,22 @@ services:
       - "4040:4040"
       - "4041:4041"
     volumes:
-      - ./batch:/home/jovyan/batch
-      - ./structured_streaming:/home/jovyan/structured_streaming
-      - ./deltalake:/home/jovyan/deltalake
-      - ./postgresql-42.2.20.jar:/home/jovyan/jars/postgresql-42.2.20.jar
+      - ./spark_01_batch:/home/jovyan/spark_01_batch
+      - ./spark_02_structured_streaming:/home/jovyan/spark_02_structured_streaming
+      - ./spark_03_deltalake:/home/jovyan/spark_03_deltalake
+      - ./spark_04_hudi:/home/jovyan/spark_04_hudi
       - ../challenges:/home/jovyan/challenges
-      - ./spark-config/spark-defaults.conf:/usr/local/spark/conf/spark-defaults.conf
+      # dont use defaults, will setup defaults in session builder
+      #- ./spark-config/spark-defaults.conf:/usr/local/spark/conf/spark-defaults.conf
       - ./spark-config/hive-site.xml:/usr/local/spark/conf/hive-site.xml
+      - ./jars/antlr4-runtime-4.9.3.jar:/usr/local/spark-3.4.1-bin-hadoop3/jars/antlr4-runtime-4.9.3.jar
+      - ./jars/aws-java-sdk-bundle-1.12.367.jar:/usr/local/spark-3.4.1-bin-hadoop3/jars/aws-java-sdk-bundle-1.12.367.jar
+      - ./jars/delta-core_2.12-2.4.0.jar:/usr/local/spark-3.4.1-bin-hadoop3/jars/delta-core_2.12-2.4.0.jar
+      - ./jars/delta-storage-2.4.0.jar:/usr/local/spark-3.4.1-bin-hadoop3/jars/delta-storage-2.4.0.jar
+      - ./jars/hadoop-aws-3.3.4.jar:/usr/local/spark-3.4.1-bin-hadoop3/jars/hadoop-aws-3.3.4.jar
+      - ./jars/hudi-spark3.4-bundle_2.12-0.14.1.jar:/usr/local/spark-3.4.1-bin-hadoop3/jars/hudi-spark3.4-bundle_2.12-0.14.1.jar
+      - ./jars/postgresql-42.2.20.jar:/usr/local/spark-3.4.1-bin-hadoop3/jars/postgresql-42.2.20.jar
+      - ./jars/wildfly-openssl-1.1.3.Final.jar:/usr/local/spark-3.4.1-bin-hadoop3/jars/wildfly-openssl-1.1.3.Final.jar
     networks:
       - dataeng-data-platform
 
