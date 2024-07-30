@@ -12,6 +12,7 @@ services:
       - ./spark_02_structured_streaming:/home/jovyan/spark_02_structured_streaming
       - ./spark_03_deltalake:/home/jovyan/spark_03_deltalake
       - ./spark_04_hudi:/home/jovyan/spark_04_hudi
+      - ./spark_05_iceberg:/home/jovyan/spark_05_iceberg
       - ../challenges:/home/jovyan/challenges
       # dont use defaults, will setup defaults in session builder
       #- ./spark-config/spark-defaults.conf:/usr/local/spark/conf/spark-defaults.conf
@@ -24,6 +25,8 @@ services:
       - ./jars/hudi-spark3.4-bundle_2.12-0.14.1.jar:/usr/local/spark-3.4.1-bin-hadoop3/jars/hudi-spark3.4-bundle_2.12-0.14.1.jar
       - ./jars/postgresql-42.2.20.jar:/usr/local/spark-3.4.1-bin-hadoop3/jars/postgresql-42.2.20.jar
       - ./jars/wildfly-openssl-1.1.3.Final.jar:/usr/local/spark-3.4.1-bin-hadoop3/jars/wildfly-openssl-1.1.3.Final.jar
+      - ./jars/iceberg-spark-extensions-3.4_2.12-1.6.0.jar:/usr/local/spark-3.4.1-bin-hadoop3/jars/iceberg-spark-extensions-3.4_2.12-1.6.0.jar
+      - ./jars/iceberg-spark-runtime-3.4_2.12-1.6.0.jar:/usr/local/spark-3.4.1-bin-hadoop3/jars/iceberg-spark-runtime-3.4_2.12-1.6.0.jar
     networks:
       - dataeng-data-platform
 
