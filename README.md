@@ -17,3 +17,9 @@ The repository contains notes and code related to data processing with Spark.
 Change folder to `/pyspark`
 The `docker-compose` file initiate a container with jupyter and spark `3.4.1` installed.\
 The container is created in the network `dataeng-data-platform` to be compatiple with [`other data infru`](https://github.com/gkosia-dataeng/data-platform-infru).
+
+
+# Next to learn
+  PySpark Series -- Basics to Advanced: https://subhamkharwal.medium.com/learnbigdata101-spark-series-940160ff4d30
+	Spark performance - spark-experiments: https://github.com/afaqueahmad7117/spark-experiments
+	Databricks full playlist: https://www.youtube.com/playlist?list=PL2IsFZBGM_IGiAvVZWAEKX8gg1ItnxEEb
