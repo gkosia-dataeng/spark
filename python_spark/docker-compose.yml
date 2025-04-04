@@ -14,6 +14,7 @@ services:
       - ./spark_04_hudi:/home/jovyan/spark_04_hudi
       - ./spark_05_iceberg:/home/jovyan/spark_05_iceberg
       - ../challenges:/home/jovyan/challenges
+      - ../tutorials:/home/jovyan/tutorials
       # dont use defaults, will setup defaults in session builder
       #- ./spark-config/spark-defaults.conf:/usr/local/spark/conf/spark-defaults.conf
       - ./spark-config/hive-site.xml:/usr/local/spark/conf/hive-site.xml

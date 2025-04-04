@@ -1,0 +1,68 @@
+Driver & Executors: 
+
+    Driver:
+        Manage information for executors
+        Analyze, distribute and schedule the work
+
+    Executor:
+        Execute the code (tasks)
+        Respond to driver with execution status
+
+    Stages: is a sequense of transformations, the stages boundaries are the shuffle  
+    Task: its a unit of work
+    Shuffle: when we need to exchange data between executors a shuffle operation happens
+
+    1. User assign a job to driver
+    2. Drive analyze and break down the job into stages and tasks
+    3. Driver assign the tasks to executors
+    4. Executors are JVM processes
+    5. Each executor has a number of cores
+
+        Num of parrallel tasks  = Num of Executors x Num of cores per Executor
+        1 core can execute 1 task at a time
+
+Transformations and Actions:
+
+    Partition: to allow parralell processing spark split the data to partitions
+               Each task operates in a signle partition at a time
+
+    Transformations: 
+        Narrow: can operate on a single partition, select, where
+        Wide: require data from other partitions, need shuffle, groupBy, join
+
+    Actions: trigger the execution plan
+
+        View data in console
+        Collect data to native languages
+        Write the data to output
+
+    Lazy evaluation: spark will wait until an action is called to execute the graph of computation
+                     optimize the execution plan, plan the resources
+
+    Spark session:
+        Driver process is the Spark Session, entry point for spark execution
+        For one application i have one spark session
+
+Dataframes: 
+
+    A dataframe is a Structure API and respresend a table
+    A dataframe has schema
+    Data in Dataframe are in partitions
+    A Dataframe is immutable
+
+Execution Plan:
+
+    Logical Plan: 
+                  1. Unresolved logical plan --> checks from the catalog to validate the table names and column names --> Resolved Logical plan
+                  2. Cataltst to do the plan optimization --> Oplimized logical plan
+                        Constant Folding: if i have 3 + 2 it will resolve it to 5 at compile time
+                        Predicate Pushdown: move filters closer to data source 
+                        Projection Pruning: removes unused columns  (select *, then use only name column)
+
+                  3. Logical DAG will be the source for Physical plan
+    Physical plan: 
+                  1. Spark will generate multiple physical plans based on cluster configuration
+                        Join reorder (based on data size)
+                        Broadcast joins
+                  2. Will calculate the Cost for each plan 
+                  3. Will choose the best plan and send it to cluster for execution
