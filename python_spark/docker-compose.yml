@@ -13,6 +13,7 @@ services:
       - ./spark_03_deltalake:/home/jovyan/spark_03_deltalake
       - ./spark_04_hudi:/home/jovyan/spark_04_hudi
       - ./spark_05_iceberg:/home/jovyan/spark_05_iceberg
+      - ./spark_06_practice:/home/jovyan/spark_06_practice
       - ../challenges:/home/jovyan/challenges
       - ../tutorials:/home/jovyan/tutorials
       # dont use defaults, will setup defaults in session builder
