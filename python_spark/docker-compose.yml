@@ -18,7 +18,9 @@ services:
       - ../tutorials:/home/jovyan/tutorials
       # dont use defaults, will setup defaults in session builder
       #- ./spark-config/spark-defaults.conf:/usr/local/spark/conf/spark-defaults.conf
-      - ./spark-config/hive-site.xml:/usr/local/spark/conf/hive-site.xml
+      
+      # uncomment to make make minIO default storage 
+      #- ./spark-config/hive-site.xml:/usr/local/spark/conf/hive-site.xml
       - ./jars/antlr4-runtime-4.9.3.jar:/usr/local/spark-3.4.1-bin-hadoop3/jars/antlr4-runtime-4.9.3.jar
       - ./jars/aws-java-sdk-bundle-1.12.367.jar:/usr/local/spark-3.4.1-bin-hadoop3/jars/aws-java-sdk-bundle-1.12.367.jar
       - ./jars/delta-core_2.12-2.4.0.jar:/usr/local/spark-3.4.1-bin-hadoop3/jars/delta-core_2.12-2.4.0.jar
