@@ -34,4 +34,17 @@ Persistence:
 
 
     Persisted objects can be found in Spark UI under the Storage tab.
-    Also in job detail son dag visualization the rdd persisted is green.
+    Also in job details on dag visualization the rdd persisted is green.
+
+
+
+
+cache == persist(StoageLevel.MEMORY_ONLY)
+
+In spark we have lazy evaluation which means that only logical plan is created until we have an action (show, count, collect, write).
+For each action Spark will create a new job.
+If the dataframe is referenced in multiple actions then the dataframe is recomputed in each action.
+
+
+
+MEMORY_ONLY: Spark will try to store the data in-memory, if does not feed then will recompute the missing partitions when needed

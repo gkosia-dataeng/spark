@@ -5,6 +5,7 @@ RDD: Reselient Distributed Dataset
     distributerd: an rdd is consists of partitions (distribute partitions accross cluster)
     RDD are Immutable: spark will create a new RDD after one operation and will remember the previus state
                        in case of failure of creation of the new rdd it will go only 1 step back
+    RDD does not know about schema, just pure objects,  can work on rdd only with funcotional programming (map, flatMap, filter, reduceByKey...)
 
 
 RDD: used to hold data in spark environment
@@ -23,7 +24,7 @@ RDD vs Dataframe:
 
     Dataframe --> Rdd:
 
-        df.RDD it will create an RDD of Row objects
+        df.RDD it will create an RDD of Row objects ()
 
     RDD to Dataframe:
 

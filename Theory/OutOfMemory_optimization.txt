@@ -1,0 +1,26 @@
+Minimize data:
+
+    Select only columns/rows needed (SELECT, filter)
+
+Increase memory:
+    spark.conf.set("spark.executor.memory", "8g") 
+    spark.conf.set("spark.driver.memory", "4g")
+
+
+Optimize Partitions: FEW PARTITIONS --> HUGE PARTITIONS
+
+    df = df.repartition(200)  # Increase partitions 
+    salting
+
+Optimise joins:
+
+    broadcast
+    
+
+
+Avoid large cache:
+
+    df.persist(StorageLevel.MEMORY_AND_DISK)
+
+    unpersist when no longer needed
+        df.unpersist()
